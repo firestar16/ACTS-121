@@ -53,52 +53,47 @@ msg_bad <- "That is not correct!"
 msg_success <- "Exactly! A forward options have zero premium"
 test_mc(correct = 5, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_bad,  msg_success))
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:f69f2da977
-## Creating a Forward Payoff Function
+ --- type:NormalExercise lang:r xp:100 skills:1
+    ## Calculate the mean
 
-In this exercise, you will define a forward payoff function using R
+    In this exercise, you'll be calculating a mean.
 
-*** =instructions
-- Define a function forward_payoff that computes a long forward payoff
-- The function should have two arguements 
-- Test your function by computing the payoff of a long forward contract when the forward price is 80 and the asset has price 70 at settlement
+    *** =instructions
+    - Create a variable `m`, equal to the mean of the numbers 0 up to 9.
+    - Print out `m`.
 
-*** =hint
-- Did you use  `function`?
-- Did you name your function `forward_payoff`?
-- Did you use two arguements for the function?
+    *** =hint
+    - You can use `mean(0:9)` to calculate `m`.
+    - To print out a variable, simply write the variable name on a new line.
 
+    *** =pre_exercise_code
+    ```{r}
+    # no pre exercise code required
+    ```
 
-
-*** =sample_code
-```{r}
-# define the function forward_payoff
-
-
-# test your function using F = 80  and S = 70
-
-```
-
-*** =solution
-```{r}
-# define the forward payoff
-
-forward_payoff <- function(S, F)
-  {(0 <= S) * (S - F)}
-
-# test your function using F =80  and S = 70
-forward_payoff(S = 70, F = 80)
-```
-
-*** =sct
-```{r}
-# define the forward payoff
-
-forward_payoff <- function(S, F)
-  {(0 <= S) * (S - F)}
-
-# test your function using F =80  and S = 70
-forward_payoff(S = 70, F = 80)
-```
+    *** =sample_code
+    ```{r}
+    # Calculate the mean of all single digit numbers and assign the result to 'm'
 
 
+    # print the result to the console
+
+    ```
+
+    *** =solution
+    ```{r}
+    # Calculate the mean of all single digit numbers and assign the result to 'm'
+    m <- mean(0:9)
+
+    # print the result to the console
+    m
+    ```
+
+    *** =sct
+    ```{r}
+    test_function("mean", args = "x")
+    test_object("m")
+    test_output_contains("m")
+    test_error()
+    success_msg("Great job!")
+    ```
