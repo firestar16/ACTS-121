@@ -1,6 +1,6 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : Forwards
+description : This Chapter Introduces Forward Contracts
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
