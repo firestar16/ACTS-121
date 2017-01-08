@@ -53,47 +53,45 @@ msg_bad <- "That is not correct!"
 msg_success <- "Exactly! A forward options have zero premium"
 test_mc(correct = 5, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_bad,  msg_success))
 ```
- --- type:NormalExercise lang:r xp:100 skills:1
-    ## Calculate the mean
-
-    In this exercise, you'll be calculating a mean.
-
-    *** =instructions
-    - Create a variable `m`, equal to the mean of the numbers 0 up to 9.
-    - Print out `m`.
-
-    *** =hint
-    - You can use `mean(0:9)` to calculate `m`.
-    - To print out a variable, simply write the variable name on a new line.
-
-    *** =pre_exercise_code
-    ```{r}
-    # no pre exercise code required
-    ```
-
-    *** =sample_code
-    ```{r}
-    # Calculate the mean of all single digit numbers and assign the result to 'm'
 
 
-    # print the result to the console
+--- type:NormalExercise lang:r xp:100 skills:1 key:14d4241837
+## Defining a forward payoff function in R
 
-    ```
+In this exercise, you'll be defining a long forward payoff function.  
 
-    *** =solution
-    ```{r}
-    # Calculate the mean of all single digit numbers and assign the result to 'm'
-    m <- mean(0:9)
+*** =instructions
+- Define forward_payoff that computes a long forward payoff as a function of the forward price F and the asset price S
+- Calculate the long forward payoff for values S = 70 and F = 80
 
-    # print the result to the console
-    m
-    ```
+*** =hint
+- Have you used `function` with two arguements?
 
-    *** =sct
-    ```{r}
-    test_function("mean", args = "x")
-    test_object("m")
-    test_output_contains("m")
-    test_error()
-    success_msg("Great job!")
-    ```
+*** =pre_exercise_code
+```{r}
+# define forward_payoff 
+```
+
+*** =sample_code
+```{r}
+# define forward_payoff 
+
+
+# test the forward_payoff function with S = 70 and F = 80
+
+```
+
+*** =solution
+```{r}
+forward_payoff <- function(S, F){(0 <= S) * (S - F)}
+forward_payoff(S =70, F = 80)
+```
+
+*** =sct
+```{r}
+test_function("forward_payoff", args = c("S","F"))
+test_object("forward_payoff")
+test_output_contains("forward_payoff(S=70, F=80)")
+test_error()
+success_msg("Great job!")
+```
