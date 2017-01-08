@@ -2,7 +2,7 @@
 title       : Forwards
 description : This Chapter Introduces Forward Contracts
 attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+  slides_link : https://www.dropbox.com/s/pb5nb5vbsa2yey8/ACTS121%20-%20Chapter%201.pdf?dl=0
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a67632fe8e
 ## A really bad movie
