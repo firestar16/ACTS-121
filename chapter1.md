@@ -5,113 +5,100 @@ attachments :
   slides_link : https://www.dropbox.com/s/pb5nb5vbsa2yey8/ACTS121%20-%20Chapter%201.pdf?dl=0
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a67632fe8e
-## A really bad movie
+## The long and short of forwards
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+Which of the following statemets is correct?
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
+- A long forward is a short position in the underlyng asset
+- A long forward is a long position in the underlying asset
+- A short forward is a long position in the underlying asset
+- A long forward and a short forward are both long positions in the underlying asset
 
 *** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+Long positions benefit from an increase in the underlying asset price?
 
-*** =pre_exercise_code
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
-
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
 
 *** =sct
 ```{r}
 # SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
+msg_success <- "Exactly! A Long forward is a long position in the underlying asset."
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:f69f2da977
-## More movies
 
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
 
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:1834a6c405
+## The premium of forward contracts
+Which statement about the premium of a forward contract is correct?
+
 
 *** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
+- A long forward has a positive premium $\Delta$
+- A long forward has a negative premium
+- A short forward has a positive premium
+- A short forward has a negative premium
+- Both short and long forwards have zero premium
 
 *** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
+How was is the forward price determined anyway?
 
-*** =pre_exercise_code
+
+
+*** =sct
 ```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
+msg_bad <- "That is not correct!"
+msg_success <- "Exactly! A forward options have zero premium"
+test_mc(correct = 5, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_bad,  msg_success))
 ```
+--- type:NormalExercise lang:r xp:100 skills:1 key:f69f2da977
+## Creating a Forward Payoff Function
+
+In this exercise, you will define a forward payoff function using R
+
+*** =instructions
+- Define a function forward_payoff that computes a long forward payoff
+- The function should have two arguements 
+- Test your function by computing the payoff of a long forward contract when the forward price is 80 and the asset has price 70 at settlement
+
+*** =hint
+- Did you use  `function`?
+- Did you name your function `forward_payoff`?
+- Did you use two arguements for the function?
+
+
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
+# define the function forward_payoff
 
 
-# Select movies that have a rating of 5 or higher: good_movies
-
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+# test your function using F = 80  and S = 70
 
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
+# define the forward payoff
 
-# Check out the structure of movie_selection
-str(movie_selection)
+forward_payoff <- function(S, F)
+  {(0 <= S) * (S - F)}
 
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+# test your function using F =80  and S = 70
+forward_payoff(S = 70, F = 80)
 ```
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+# define the forward payoff
 
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
+forward_payoff <- function(S, F)
+  {(0 <= S) * (S - F)}
 
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
-test_error()
-
-success_msg("Good work!")
+# test your function using F =80  and S = 70
+forward_payoff(S = 70, F = 80)
 ```
+
 
