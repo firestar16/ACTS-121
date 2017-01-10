@@ -2,12 +2,12 @@
 title       : Forwards
 description : This Chapter Introduces Forward Contracts
 attachments :
-  slides_link : https://www.dropbox.com/s/pb5nb5vbsa2yey8/ACTS121%20-%20Chapter%201.pdf?dl=0
+  
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a67632fe8e
 ## The long and short of forwards
 
-Which of the following statemets is correct?
+Which of the following statements is correct?
 
 *** =instructions
 - A long forward is a short position in the underlyng asset
