@@ -1,5 +1,5 @@
 ---
-title       : Forwards
+title       : Normal Exercise Examples
 description : This Chapter Introduces Forward Contracts
 attachments :
   
