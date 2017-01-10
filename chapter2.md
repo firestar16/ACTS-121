@@ -11,9 +11,9 @@ How much is `2 + 2`
 
 
 *** =instructions
--2
--3
--4
+- 2
+- 3
+- 4
 
 *** =hint
 Here's a hint:  Think about your time in primary school.
