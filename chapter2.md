@@ -1,4 +1,4 @@
 ---
-title       : Call Options
-description : This chapter introduces call options
+title       : Multiple Choice Examples
+description : This chapter includes examples of multiple choice examples
 
