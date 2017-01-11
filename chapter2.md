@@ -19,6 +19,7 @@ Define `call_payoff` to be payoff of a European call option on stock index $S$. 
 * `S` the underlying asset price at expiration
 
 *** =hint
+Make sure to include a factor `(K <= S)` in your function definition
 
 
 *** =pre_exercise_code
@@ -34,11 +35,15 @@ Define `call_payoff` to be payoff of a European call option on stock index $S$. 
 *** =solution
 ```{r}
 # Define call_payoff 
-call_payoff <- function(K, S){(K < = S) * (S - K)}
+call_payoff <- function(K, S){(K <= S) * (S - K)}
 ```
 
 *** =sct
 ```{r}
-# Define call_payoff 
-call_payoff <- function(K, S){(K < = S) * (S - K)}
+test_error()
+test_object("call_payoff",
+            undefined_msg = "Did you correctly define call_payoff?",
+            incorrect_msg = "Did you use all three arguements of integrate?  Did you include a (K <= S) factor in your definition?")
+success_msg("Good job!")
+
 ```
