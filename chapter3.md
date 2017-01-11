@@ -2,6 +2,7 @@
 title       : The Option Greeks 
 description : This chapter explores the options greeks
 attachments :
+slides      : 
   
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b1c6ba65b9
