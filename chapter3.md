@@ -1,3 +1,8 @@
+---
+title       : The Option Greeks
+description : This chapter explores the options greeks
+attachments :
+  
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b1c6ba65b9
 ## $\Delta_{call}$
@@ -40,5 +45,9 @@ call_delta <- function(S, K, t, T, r, v, d){exp(d * (T - t))*d_1(S, K, t, T, r, 
 call_delta(S = 40, K = 40, t = 0, T =1, r = 0.05, v = 0.30, d = 0)
 *** =sct
 ```{r}
-
+test_error()
+test_object("call_delta",
+            undefined_msg = "Did you correctly define call_delta using d_1?",
+            incorrect_msg = "Did you use all six arguements?  Did you remember to test call_delta?")
+success_msg("Incredible!")
 ```
