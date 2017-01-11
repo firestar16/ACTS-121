@@ -1,7 +1,7 @@
-title            : Testing DataCamp Teaching
+title            : ACTS 121 / Introduction to Derivatives
 instructors      :
  - john.garza@drake.edu
-description      : This is just a practice course.  I am trying to learn how to use DataCamp/Teach
+description      : This is collection of exercises for ACTS 121 students
 university       : Drake University
 difficulty_level : 1
 time_needed      : "4 hours"
