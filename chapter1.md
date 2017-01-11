@@ -1,13 +1,13 @@
 ---
-title       : Normal Exercise Examples
-description : This Chapter Provides Normal Exercise Examples
+title       : Integration using R
+description : This chapter provides examples of computing integrals using R
 attachments :
   
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e62a39e6f9
 ## One Dimensional Integration for Financial Derivatives
-The mathematics of financial derivatives involves integrating probability density functions to compute expected values and probabilities.  In this course, you will use R to compute these integrals.  Follow the instructions below to calculate a simple integral using the `integrate()` function.
+The mathematics of financial derivatives involves integrating probability density functions to compute expected values and probabilities.  In this course, you will use R to compute some these integrals numerically.  Follow the instructions below to calculate a simple integral using the `integrate()` function.
 
 
 
