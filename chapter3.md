@@ -7,8 +7,6 @@ attachments :
 --- type:NormalExercise lang:r xp:100 skills:1 key:b1c6ba65b9
 ## Delta for a European Call option
 
-$$\Delta_{call} = e^{-\delta(T-t)} \times d_1$$
-
 In this exercise you will define `call_delta` = $\Delta_{call}$ using R.
 
 
@@ -24,8 +22,16 @@ Define a function `call_delta` that equals the delta of a European call option. 
 * $d$ - the underlying stock's annualized dividend yield
 
 *** =hint
+Did you define `d_1 <- function(S, K, t, T, r, v, d){(log(S / K) + (r - d + 0.5 * v ^ 2) * (T - t)) / (v * sqrt(T -t))}` first?
 
 *** =pre_exercise_code
+```{r}
+
+
+
+```
+
+*** =sample_code
 ```{r}
 # first define d_1
 
@@ -33,27 +39,21 @@ Define a function `call_delta` that equals the delta of a European call option. 
 # Define call_delta using d_1
 
 
-# Test call_delta using S = 40, K = 40, t = 0, T =1, r = 0.05, v = 0.30, and d = 0
-
-
-```
-
-*** =sample_code
-```{r}
-
+# Test call_delta using S = 40, K = 40, t = 0, T = 1, r = 0.05, v = 0.30, and d = 0
 ```
 
 *** =solution
 ```{r}
 # First define d_1
-```
 d_1 <- function(S, K, t, T, r, v, d){(log(S / K) + (r - d + 0.5 * v ^ 2) * (T - t)) / (v * sqrt(T -t))}
 
 # Define call_delta using d_1
 call_delta <- function(S, K, t, T, r, v, d){exp(d * (T - t))*pnorm(d_1(S, K, t, T, r, v, d))}
 
 # Test call_delta using S = 40, K = 40, t = 0, T =1, r = 0.05, v = 0.30, and d = 0
-call_delta(S = 40, K = 40, t = 0, T =1, r = 0.05, v = 0.30, d = 0)
+call_delta(S = 40, K = 40, t = 0, T = 1, r = 0.05, v = 0.30, d = 0)
+```
+
 *** =sct
 ```{r}
 test_error()
