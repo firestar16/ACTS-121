@@ -10,9 +10,16 @@ slides      :
 
 In this exercise you will define `call_delta` = $\Delta_{call}$ using R.
 
+$\Delta_{call} = e^{-\delta(T-t)} N(d{1})$
+
+
+$d{_1} = \dfrac{\ln(S/K)+(r-\delta +0.5\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$
+
+
+
 
 *** =instructions
-Define a function `call_delta` that equals the delta of a European call option.  Use the following  
+Define a function `call_delta` that equals the delta of a European call option.  Since greek symbols like $\sigma$ and $\delta$ are not able to be entered into R, use the following variables names instead. 
 
 * $K$ - strike price
 * $S$ - current underlying asset price
@@ -59,7 +66,7 @@ call_delta(S = 40, K = 40, t = 0, T = 1, r = 0.05, v = 0.30, d = 0)
 ```{r}
 test_error()
 test_object("call_delta",
-            undefined_msg = "Did you correctly define call_delta using d_1?",
-            incorrect_msg = "Did you use all six arguements?  Did you remember to test call_delta?")
+            undefined_msg = "Did you define `call_delta` using `d_1`?",
+            incorrect_msg = "Did you use all six arguements?  Did you remember to test `call_delta`?")
 success_msg("Incredible!")
 ```
