@@ -86,7 +86,8 @@ Calculate the expected value of $X$.
 - Assign your answer to `expected_value`
 
 *** =hint
-
+Did you use `integrate()` with arguements `f = function(x){x*f(x)}`,`lower = -2`, and `upper = 4`? Did you define the density using
+`f <- function(x){(-2 < x & x < 4) * abs(x) / 10}`?  Did you only select the numerical result of `integrate`?  Did you assign the expected value to `expected_value` and print the result to the console? 
 
 *** =pre_exercise_code
 ```{r}
@@ -128,6 +129,16 @@ expected_value
 
 *** =sct
 ```{r}
-
+test_error()
+test_object("f",
+            undefined_msg = "Did you define the density function as f?",
+            incorrect_msg = "Did you correctly define the density function of X?")
+test_object("expected_value",
+            undefined_msg = "Did you assign the expected value to expected_value?",
+            incorrect_msg = "Did you correctly compute E[X]?")
+test_output_contains(expected_value,
+                     times = 1,
+                     incorrect_msg = "Did you print out expected_value?")
+success_msg("Good job! You can solve exam P problems using R")
 ```
 
