@@ -258,8 +258,10 @@ Calculate the value of $p$ such that $E[X] = 2$
 - Load both the stats and mosaic packages
 - Define `f` a a function of  $x$ and $p$
 - Use `integrate()` to define `ex(p)` 
-- Specify solve the equation ex(p) by trial and error
+- Vectorize `ex`
+- Specify solve the equation ex(p) = 2 using `which.min()`
 - Save your answer as p_answer
+- Print p_answer
 
 *** =pre_exercise_code
 ```{r}
@@ -274,13 +276,16 @@ Calculate the value of $p$ such that $E[X] = 2$
 # Define the density function f
 
 
-# Use f to define an expected value function e
+# Use f to define an expected value function ex
 
 
-# Solve the equation e(p) = 2 for the value of p
+# Vectorize ex
 
 
-# Print p to the console
+# Estimate a solution to the equation e(p) = 2 and save ave as p_answer
+
+
+# Print p_answer to the console
 
 
 ```
@@ -297,16 +302,29 @@ f <- function(x, p){(1 < x) * (p - 1) / x ^ p}
 # Use f to define an expected value function e
 ex <- function(p){integrate(function(x){x * f(x, p)}, lower = 1, upper = Inf)$value}
 
-# Solve the equation e(p) = 2 by trial and error, save as p_answer
-ex(2:5)
-p_answer <- 3
+# Vectorize ex
+ex <- Vectorize(ex)
+
+# Estimate a solution to the equation e(p) = 2 and save as p_answer
+values   <- ex(seq(2.01, 5, by = 0.001)) 
+index    <- which.min(abs(values - 2))
+p_answer <- values[index]
 
 # Print p_answer to the console
 p_answer
-
 ```
 
 *** =sct
 ```{r}
-
+test_error()
+test_object("f",
+            undefined_msg = "Make sure to define the density f(x,p)",
+            incorrect_msg = "Did you correctly define f(x,p)?")
+test_object("ex",
+            undefined_msg = "Did you assign the expected value function ex",
+            incorrect_msg = "Your definition of for ex is wrong")
+test_output_contains(p_answer,
+                     times = 1,
+                     incorrect_msg = "Did you print out p_answer")
+success_msg("Good job! You are getting really good at this!")
 ```
