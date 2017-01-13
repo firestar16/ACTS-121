@@ -14,7 +14,7 @@ The mathematics of financial derivatives involves integrating probability densit
 *** =instructions
 Load the `stats` package.
 
-Use R to evaluate the integral $\displaystyle{\int\limits_0^2 x \ dx}$.  Assign your answer to the variable `integral`
+Use R to evaluate the integral $\displaystyle{\int\limits_0^2 x^2 \ dx}$.  Assign your answer to the variable `integral`
 Your call to `integrate` should use three arguements
 
 * `f = function(x){x ^ 2}`
@@ -142,3 +142,171 @@ test_output_contains(expected_value,
 success_msg("Good job! You can solve exam P problems using R")
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5bcf4a8e2e
+## SOA Exam P #55
+An insurance company's monthly claims are modeled by a continuous, positive random variable $X$ whose probability density function is proportional to $(1+x)^{-4}$, for $\ 0    <  \  x   <  \infty$.  Calculate the company's expected monthly claims.
+
+
+*** =instructions
+
+* Solve for the constant of proportionality, `c`.  
+* Assign the probability density function of $X$ to `f`
+* Calculate $E[X]$ using `integrate()`
+
+*** =hint
+- Did you integrate $(1+x)^{-4}$ over the interval $(0, \infty)$ and assign the value to `c`?
+
+
+- Did you compute $\displaystyle{E[X] = \int\limits_0^{\infty} x f(x) \ dx}$?
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# load the stats package
+
+
+# Calculate the contant of proportionality and assign this value to c
+
+
+# Assign the density function of X to f
+
+
+# Calculate the expected value of X and save as expected_value
+
+
+# Display expected_value
+
+```
+
+*** =solution
+```{r}
+# load the stats package
+library(stats)
+
+# Calculate the contant of proportinality and assign this value to c
+(c <- 1 / integrate(function(x) (1 + x) ^{-4}, lower = 0, upper = Inf)$value)
+
+
+# Assign the density function of X to f
+f <- function(x){c / (1 + x)^4}
+
+
+# Calculate the expected value of X and save as expected_value
+expected_value <- integrate(function(x){x * f(x)}, lower = 0,  upper = Inf)$value
+
+# Display expected_value
+expected_value
+```
+
+*** =sct
+```{r}
+test_error()
+test_object("c",
+            undefined_msg = "Did you define the constant c?",
+            incorrect_msg = "Did you correctly calculate the value of c?")
+
+test_object("f",
+            undefined_msg = "Did you define the density function as f?",
+            incorrect_msg = "Did you correctly define the density function of X using the value of c?")
+test_object("expected_value",
+            undefined_msg = "Did you assign the expected value to expected_value?",
+            incorrect_msg = "Your answer for E[X] is wrong")
+test_output_contains(expected_value,
+                     times = 1,
+                     incorrect_msg = "Did you print out expected_value?")
+success_msg("Good job! You are getting really good at this!")
+```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b2434ee5d2
+## SOA Exam P #157
+
+Let $X$ be a continuous random variable with density function
+
+$$
+f(x) = 
+\begin{cases}
+\dfrac{p-1}{x^p} &, \ 1 < x \\\
+& \\\
+0 &, \ \text{otherwise} \\\
+\end{cases}
+$$
+
+Calculate the value of $p$ such that $E[X] = 2$
+
+
+
+*** =instructions
+* load the stats and mosaic packages
+
+* Define a density function $f(x,p)$ as `f`
+
+* Note that for $E[X]$ to be defined, $2 < p$
+
+* Define an expected value function $e(p) = \displaystyle{\int\limits_1^{\infty} x \times f(x,p) \ dx}$
+
+* Solve the equation $e(p) = 2$ using mosaic's `findZeros()` function.  Remember that $2 < p$ 
+
+*** =hint
+- Load both the stats and mosaic packages
+- Define `f` a a function of  $x$ and $p$
+- Use `integrate()` to define `ex(p)` 
+- Specify solve the equation ex(p) by trial and error
+- Save your answer as p_answer
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+# load the stats and mosaic packages
+
+
+# Define the density function f
+
+
+# Use f to define an expected value function e
+
+
+# Solve the equation e(p) = 2 for the value of p
+
+
+# Print p to the console
+
+
+```
+
+*** =solution
+```{r}
+# load the stats and mosaic packages
+library(stats)
+library(mosaic)
+
+# Define the density function f
+f <- function(x, p){(1 < x) * (p - 1) / x ^ p}
+
+# Use f to define an expected value function e
+ex <- function(p){integrate(function(x){x * f(x, p)}, lower = 1, upper = Inf)$value}
+
+# Solve the equation e(p) = 2 by trial and error, save as p_answer
+ex(2:5)
+p_answer <- 3
+
+# Print p_answer to the console
+p_answer
+
+```
+
+*** =sct
+```{r}
+
+```
