@@ -1,6 +1,6 @@
 ---
-title       : Defining Derivative Payoffs
-description : This chapter provides examples of defining option payoffs using R
+title       : Derivative Payoffs Using R
+description : This lab is about working with derivative payoff functions in R
 attachments :
   
 

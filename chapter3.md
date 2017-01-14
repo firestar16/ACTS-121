@@ -1,6 +1,6 @@
 ---
 title       : The Option Greeks 
-description : This chapter explores the options greeks
+description : This lab is about working with the option greeks using R
 attachments :
 slides      : 
   
@@ -65,6 +65,9 @@ call_delta(S = 40, K = 40, t = 0, T = 1, r = 0.05, v = 0.30, d = 0)
 *** =sct
 ```{r}
 test_error()
+test_object("d_1",
+            undefined_msg = "Did you define `d_1`?",
+            incorrect_msg = "Your definition of `d_1` has an error")
 test_object("call_delta",
             undefined_msg = "Did you define `call_delta` using `d_1`?",
             incorrect_msg = "Did you use all six arguements?  Did you remember to test `call_delta`?")

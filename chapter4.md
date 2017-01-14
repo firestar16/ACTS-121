@@ -1,3 +1,3 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
+title       : Normal Random Variables in R
+description : This lab is about working with normal distributions in R

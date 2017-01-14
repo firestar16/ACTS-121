@@ -1,6 +1,6 @@
 ---
 title       : Integration using R
-description : This chapter provides examples of computing integrals using R
+description : This lab is about working integrating one dimensional functions using R
 attachments :
   
 
@@ -14,7 +14,10 @@ The mathematics of financial derivatives involves integrating probability densit
 *** =instructions
 Load the `stats` package.
 
-Use R to evaluate the integral $\displaystyle{\int\limits_0^2 x^2 \ dx}$.  Assign your answer to the variable `integral`
+Use R to evaluate the integral $\displaystyle{\int\limits_0^2 x^2 \ dx}$.  
+
+Assign your answer to the variable `integral`
+
 Your call to `integrate` should use three arguements
 
 * `f = function(x){x ^ 2}`
@@ -244,22 +247,24 @@ Calculate the value of $p$ such that $E[X] = 2$
 
 
 *** =instructions
-* load the stats and mosaic packages
+* load the stats package
 
 * Define a density function $f(x,p)$ as `f`
 
 * Note that for $E[X]$ to be defined, $2 < p$
 
-* Define an expected value function $e(p) = \displaystyle{\int\limits_1^{\infty} x \times f(x,p) \ dx}$
+* Define an expected value function $ex(p) = \displaystyle{\int\limits_1^{\infty} x \cdot f(x,p) \ dx}$
 
-* Solve the equation $e(p) = 2$ using mosaic's `findZeros()` function.  Remember that $2 < p$ 
+* Estimate a solution to the equation $ex(p) = 2$ using `which.min()`
+
+* Remember that $2 < p$ 
 
 *** =hint
-- Load both the stats and mosaic packages
+- Load both the stats package
 - Define `f` a a function of  $x$ and $p$
 - Use `integrate()` to define `ex(p)` 
 - Vectorize `ex`
-- Specify solve the equation ex(p) = 2 using `which.min()`
+- Estimate a solution to the equation ex(p) = 2 using `which.min()`
 - Save your answer as p_answer
 - Print p_answer
 
@@ -270,7 +275,7 @@ Calculate the value of $p$ such that $E[X] = 2$
 
 *** =sample_code
 ```{r}
-# load the stats and mosaic packages
+# load the stats package
 
 
 # Define the density function f
@@ -282,7 +287,7 @@ Calculate the value of $p$ such that $E[X] = 2$
 # Vectorize ex
 
 
-# Estimate a solution to the equation e(p) = 2 and save ave as p_answer
+# Estimate a solution to the equation ex(p) = 2 and save ave as p_answer
 
 
 # Print p_answer to the console
@@ -292,9 +297,9 @@ Calculate the value of $p$ such that $E[X] = 2$
 
 *** =solution
 ```{r}
-# load the stats and mosaic packages
+# load the stats package
 library(stats)
-library(mosaic)
+
 
 # Define the density function f
 f <- function(x, p){(1 < x) * (p - 1) / x ^ p}
