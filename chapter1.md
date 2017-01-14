@@ -1,6 +1,6 @@
 ---
 title       : Integration using R
-description : This lab is about working integrating one dimensional functions using R
+description : This lab is about  integrating one dimensional functions using R
 attachments :
   
 
